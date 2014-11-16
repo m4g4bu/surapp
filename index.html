@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sur Interactive</title>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+<link rel="stylesheet" href="theme/css/jquery.mobile.min.css" />
+<link rel="stylesheet" href="theme/css/surinteractive.min.css" />
+<link rel="stylesheet" href="theme/css/jquery.mobile.icons.min.css" />
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>    
+<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+<script src="js/json.js"></script>
+</head>
+<body>
+<div data-role="page" id="login" data-theme="a">
+    <header data-role="header" data-position="fixed">
+        <h1>Sistema de gesti&oacute;n de Requerimientos</h1>
+    </header>  
+    <div data-role="content">
+        <div class="logo">
+            <img src="theme/img/logo_sur.png" width="222" height="70" alt="logo" />
+        </div>
+        <div id="fm">
+            <form id="formulario">
+            	<label for="username">Ingrese su usuario:</label>
+                <input type="text" value="" name="usuario" id="username"/>
+                <label for="password">Ingrese su contrase&ntilde;a:</label>
+                <input type="password" value="" name="clave" id="password"/>  
+                <a data-role="button" id="login-button" data-theme="a" class="ui-btn-icon-right ui-icon-plus ui-btn-b">
+					Loguearse
+                </a>
+            </form>       
+        </div>
+    </div>    
+    <footer data-role="footer" data-position="fixed" id="footer">
+        <p>&copy; Copyright 2014 Sur Interactive</p>
+    </footer>	
+</div>
+<div data-role="page" id="menu" data-theme="a">
+	<header data-role="header" data-position="fixed">
+    	<a rel="external" data-transition="slide" href="#login" class="b_nuevo">Volver</a>
+    	        <h3>Lista de Errores</h3>
+    </header>
+    <div data-role="content">
+    	<h3>Bienvenido: </h3>
+        <ul data-role="listview" data-inset="true">
+	         <li><a href="listabugs/" data-transition="slide">Reportar Error</a></li>
+	         <li><a href="mejoras/" data-transition="slide">Solicitar Mejora</a></li>
+        </ul>      
+    </div>
+	<footer data-role="footer" data-position="fixed" id="footer">
+        <p>&copy; Copyright 2014 Sur Interactive</p>
+    </footer>
+</div> 
+</body>
+</html>

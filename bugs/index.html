@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sur Interactive</title>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"/>
+<link rel="stylesheet" href="../theme/css/jquery.mobile.min.css" />
+<link rel="stylesheet" href="../theme/css/surinteractive.min.css" />
+<link rel="stylesheet" href="../theme/css/jquery.mobile.icons.min.css" />
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>    
+<script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+<script src="js/json.js"></script>
+</head>
+<body>
+<div data-role="page" id="nuevoError" data-theme="a">
+    <header data-role="header" id="header" data-position="fixed">
+    	<a rel="external" href="../listabugs/index.html#bugs" class="b_nuevo">Volver</a>
+		<h3>Agregar Bugs</h3>
+    </header>
+    <div class="Main" data-role="content">
+           <form id="formulario"> 
+                <label for="tipo" class="select">Tipo</label>
+                <select name="tipo" id="tipo">
+                	<option value="seleccionar">Seleccionar..</option>
+                    <option value="codigo">Codigo</option>
+                    <option value="contenido">Contenido</option>
+                    <option value="visualizacion">Visualizaci&oacute;n</option>
+                </select>
+    			<label for="prioridad" class="select">Prioridad</label>
+                <select name="prioridad" id="prioridad">
+                	<option value="seleccionar">Seleccionar..</option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Media</option>
+                    <option value="baja">Baja</option>
+                </select>
+    			<label for="severidad" class="select">Severidad</label>
+                <select name="severidad" id="severidad">
+                	<option value="seleccionar">Seleccionar..</option>
+                    <option value="critica">Critica</option>
+                    <option value="moderada">Moderada</option>
+                    <option value="menor">Menor</option>
+                    <option value="cosmetica">Cosm&eacute;tica</option>
+                </select>
+                <label for="sistema" class="select">Sistema</label>
+                <select name="sistema" id="sistema">
+                	<option value="seleccionar">Seleccionar..</option>
+                    <option value="android">Android</option>
+                    <option value="ios">iOS</option>
+                    <option value="wphone">Windows Phone</option>
+                    <option value="firefoxos">Firefox OS</option>
+                    <option value="blackberry">Blackberry</option>
+                </select>
+                <label for="navegador" class="select">Navegador</label>
+                <select name="navegador" id="navegador">
+                	<option value="seleccionar">Seleccionar..</option>
+                    <option value="firefox">Firefox</option>
+                    <option value="chrome">Chrome</option>
+                    <option value="wphone">ie</option>
+                    <option value="opera">Opera</option>
+                    <option value="safari">Safari</option>
+                </select>                                
+                <label for="titulo">Titulo</label>
+                <input type="text" name="titulo" id="titulo"/>
+                <label for="descripcion">Descripcion</label>
+                <textarea name="descripcion" id="descripcion" rows="10"></textarea>
+ 				<fieldset class="ui-grid-a">
+                            <div class="ui-block-a">
+                            	<input type="reset" id="borrar" value="Borrar" /></div>
+                            <div class="ui-block-b">
+                            	<input type="submit" id="submit" value="Enviar" />
+                        </fieldset>
+                       <h3 id="notification"></h3>
+            </form>
+    </div><!-- /content -->
+    <footer data-role="footer" data-position="fixed" id="footer">
+        <p>&copy; Copyright 2014 Sur Interactive</p>
+    </footer>
+</div><!-- /page -->   
+</body>
+</html>
