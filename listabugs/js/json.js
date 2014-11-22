@@ -1,7 +1,8 @@
-
+$(document).on('pagebeforeshow', '#bugs', function(){ 
 	// Dirección desde donde se envía la información desde php
-	address = 'inc/listarErrores.php';
 	
+	address = 'inc/listarErrores.php';
+
 	// Petición Ajax
 	$.ajax({url: address,
             cache: false,
@@ -54,3 +55,4 @@
          
 		    }
 	});
+});

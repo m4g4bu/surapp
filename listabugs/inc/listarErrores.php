@@ -5,10 +5,10 @@ require_once 'conexion.php';
 
 $conn = dbConnect();
 
+
 try {
 		
-	$sql = "
-SELECT er.codigo_error,
+	$sql = "select er.titulo,er.codigo_error,c.usuario,
 	   py.proyecto,
 	   er.tipo, er.estado,
 	   er.severidad, 
@@ -16,9 +16,13 @@ SELECT er.codigo_error,
 	   er.navegador, 
 	   er.titulo,
 	   er.descripcion,
-	   er.fecha_creacion 
-FROM errores er, proyectos py 
-WHERE er.idproyecto = py.id";
+	   er.fecha_creacion  from clientes c
+left join sesiones ses on c.usuario = ses.usuario
+left join proyectos py on c.proyecto = py.id
+left join errores er on c.proyecto = er.idproyecto
+WHERE c.usuario = (select ses.usuario from sesiones ses
+                            ORDER BY ses.fecha_creacion DESC
+                 LIMIT 1)";
 
     $result = $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -36,7 +40,7 @@ WHERE er.idproyecto = py.id";
 					'descripcion' => $row['descripcion'],
 					'fecha_creacion' => $row['fecha_creacion']
 					);
-			//		var_dump($row);
+					
 }
 
 	header("Content-type: application/json", true);

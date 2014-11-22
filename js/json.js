@@ -1,54 +1,33 @@
 $(document).on('pagebeforeshow', '#login', function(){ 
-    
-	// 1. Al enviar el formulario
-	
-	$('#login-button').on('click', function(){
-        
-		// 1. Verifica la longitud del usuario / clave
-		
-		if($('#username').val().length > 0 && $('#password').val().length > 0){
-           
-		   // Si el usuario / clave no están vacias
-		   
-		    userObject.username = $('#username').val(); // Ingreso el usuario en el objeto
-            userObject.password = $('#password').val(); // Ingreso la clave en el objeto
-			
-            // Convierto la variable userObject al formato JSON
-			
+    $('#login-button').on('click', function(){
+        if($('#username').val().length > 0 && $('#password').val().length > 0){
+            userObject.username = $('#username').val(); // Put username into the object
+            userObject.password = $('#password').val(); // Put password into the object
+            // Convert an userObject to a JSON string representation
             var outputJSON = JSON.stringify(userObject);
-            
-			// Envio los datos al servidor en formato Ajax
-            
+            // Send data to server through ajax call
+            // action is functionality we want to call and outputJSON is our data
             ajax.sendRequest({action : 'login', outputJSON : outputJSON});
-      
-	    } else {
-			
-			// Si la longitud de usuario / clave están vacias, muestra un mensaje
-			
-            alert('Por favor ingresar todos los campos mandatorios');
-			
+        } else {
+            alert('Please fill all nececery fields');
         }
     });    
 });
 
+$(document).on('pagebeforeshow', '#menu', function(){ 
+    if(userObject.username.length == 0){ // If username is not set (lets say after force page refresh) get us back to the login page
+        $.mobile.changePage( "#login", { transition: "slide"} ); // In case result is true change page to Index  
+    }
+    $(this).find('[data-role="content"] h4').append('Bienvenido ' + userObject.username); // Change header with wellcome msg
+    //$("#index").trigger('pagecreate');
+});
 
-
-
-
-
-
-
+// This will be an ajax function set
 var ajax = {
-	
     sendRequest:function(save_data){
-		
-		var address = null;
-
-		//address = 'http://127.0.0.1/surapp/inc/validacionUsuarios.php?jsoncallback=?';
 		address = 'http://mobile.surinteractive.com/inc/validacionUsuarios.php?jsoncallback=?';
 		
         $.ajax({url: address,
-            crossDomain: true,
             data: save_data,
             async: true,
             beforeSend: function() {
@@ -60,7 +39,9 @@ var ajax = {
                 $.mobile.loading('hide');
             },
             success: function (result) {
+				//console.log(result);
                 if(result == "true") {
+					
                     $.mobile.changePage( "#menu", { transition: "slide"} ); 
 					
                 } else {
@@ -72,7 +53,7 @@ var ajax = {
 				
                 // This callback function will trigger on unsuccessful action                
                 alert('Error de conexión. Intente nuevamente!');
-				alert(error);
+				
             }
         });
     }
@@ -83,8 +64,3 @@ var userObject = {
     username : "",
     password : ""
 }
-
-
-
-
-          
